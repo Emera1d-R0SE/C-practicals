@@ -1,25 +1,25 @@
-//finding the largest element of the array using recursion.
-#include <stdio.h>
-int main() {
-    int n;
-    printf("enter size..: ");
-    scanf("%d", &n);
-    int arr[n];
-    printf("enter elements: ");
-    for(int i=0;i<n;i++){
-    scanf("%d", &arr[i]);}
+//power of number
+//n*power(n,p−1) n is multiplied p-1 times
+// 3 power 4( 3*3*3*3)
+#include<stdio.h>
+int func_power(int n, int p);
+int main()
+{
+    int num, pow;
+    printf("enter a base value: ");
+    scanf("%d", &num);
+    printf("enter power value: ");
+    scanf("%d", &pow);
+    printf("power of numner is: %d", func_power(num,pow));
 
-    printf("The largest element in the array is %d", findLargest(arr,n));
-
-    return 0;
 }
-int findLargest(int arr[], int n) {
-    if (n == 1) {
-        return arr[0];
+int func_power(int n, int p)
+{
+    if(p==0)
+    {
+        return 1;
     }
-    if (arr[n - 1] > findLargest(arr, n-1)) {
-        return arr[n - 1];
-    } else {
-        return findLargest(arr, n-1);
+    else{
+        return (n*func_power(n, p-1));
     }
 }
