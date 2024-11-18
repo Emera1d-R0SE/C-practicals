@@ -1,23 +1,30 @@
-//power of a number using recursion
+//Palindrome using recurssion
 #include<stdio.h>
-int func_power(int n, int p);
-int main()
+#include<string.h>
+int palindrome(char str[], int start, int end)
 {
-    int num, pow;
-    printf("enter a base value: ");
-    scanf("%d", &num);
-    printf("enter power value: ");
-    scanf("%d", &pow);
-    printf("power of numner is: %d", func_power(num,pow));
-
-}
-int func_power(int n, int p)
-{
-    if(p==0)
+    if(start>=end)
     {
         return 1;
     }
-    else{
-        return (n*func_power(n, p-1));
+    if(str[start]!=str[end])
+    {
+        return 0;
     }
+    return palindrome(str, start+1, end-1);
+}
+int main()
+{
+    char str[100];
+    printf("enter a string: \n");
+    scanf("%s", &str);
+    int result=palindrome(str, 0, strlen(str)-1);
+    if(result)
+    {
+        printf("%s is a palindrome\n", str);
+    }
+    else{
+        printf("\"%s\" is not a palindrome\n", str);//for ""
+    }
+    return 0;
 }
